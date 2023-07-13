@@ -67,7 +67,4 @@ def close(request, task_id):
     task.completed=True
     task.save()
 
-    context = {
-        'task' : task,
-    }
-    return render(request, 'todo/close.html', context)
+    return redirect(index)
