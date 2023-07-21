@@ -13,7 +13,7 @@ class SampleTestCase(TestCase):
 class TaskModelTestCase(TestCase):
     def test_create_task1(self):
         due = timezone.make_aware(datetime(2023, 6, 30, 23, 59, 59))
-        task = Task(title='task1', comment='Comment', due_at=due)
+        task = Task(title='task1', due_at=due)
         task.save()
 
         task = Task.objects.get(pk=task.pk)
@@ -65,7 +65,7 @@ class TodoViewTestCase(TestCase):
 
     def test_index_post(self):
         client = Client()
-        data = {'title': 'Test Task', 'due_at': '2023-06-30 23:59:59'}
+        data = {'title': 'Test Task','comment': 'Comment', 'due_at': '2023-06-30 23:59:59'}
         response = client.post('/', data)
 
         self.assertEqual(response.status_code, 200)
