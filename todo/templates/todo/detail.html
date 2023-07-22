@@ -10,6 +10,7 @@
 
   <body>
     <h1>{{ task.title }}</h1>
+    <p>コメント: {{ task.comment }}</p>
     <ul>
       <li>登録日: {{ task.posted_at }}</li>
       {% if task.due_at %}

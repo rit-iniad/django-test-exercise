@@ -19,6 +19,10 @@
         <input id="titleInput" name="title" type="text" placeholder="タイトルを入力してね">
       </div>
       <div>
+        <label for='commentInput'>コメント</label><br>
+        <input id="commentInput" name="comment" type="text" placeholder="コメントを入力してね">
+      </div>
+      <div>
         <label for="dueInput">目標</label><br>
         <input id="dueInput" name="due_at" type="datetime-local">
       </div>
@@ -36,6 +40,7 @@
     {% for task in tasks %}
     <div class="text">
       <h2><a href="{% url 'detail' task.id %}">{{ task.title }}</a></h2>
+      <p><a href="{%url 'detail' task.id %}">{{ task.comment }}</a></p>
       <ul>
         <li>登録日: {{ task.posted_at }}</li>
         {% if task.due_at %} 
