@@ -11,6 +11,7 @@
 
   <body>
     <h1>タスク管理アプリ</h1>
+    <div class="boody">
     <p>以下のフォームにタスクを登録しよう</p>
     <form action="{% url 'index' %}" method="post">
       {% csrf_token %}
@@ -20,7 +21,7 @@
       </div>
       <div>
         <label for='commentInput'>コメント</label><br>
-        <input id="commentInput" name="comment" type="text" placeholder="コメントを入力してね">
+        <textarea id="commentInput" name="comment" type="text" placeholder="コメントを入力してね" rows="6"></textarea>
       </div>
       <div>
         <label for="dueInput">目標</label><br>
@@ -40,7 +41,7 @@
     {% for task in tasks %}
     <div class="text">
       <h2><a href="{% url 'detail' task.id %}">{{ task.title }}</a></h2>
-      <p><a href="{%url 'detail' task.id %}">{{ task.comment }}</a></p>
+      <p>{{ task.comment }}</p>
       <ul>
         <li>登録日: {{ task.posted_at }}</li>
         {% if task.due_at %} 
@@ -54,6 +55,7 @@
       </ul>
     </div>
     {% endfor %}
+  </div>
   </body>
 
 </html>
